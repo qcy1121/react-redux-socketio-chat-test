@@ -5,6 +5,7 @@ var UserSchema = mongoose.Schema({
   local: {
     username: { type: String, unique: true },
     password: String,
+    phone:String,
     email: String,
   },
   facebook: {
@@ -12,6 +13,10 @@ var UserSchema = mongoose.Schema({
     username: String,
     token: String,
     email: String,
+  },
+  wechat:{//todo wechat info
+  username:String,
+
   }
 });
 

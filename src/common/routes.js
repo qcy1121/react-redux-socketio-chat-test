@@ -5,6 +5,7 @@ import SignIn from './components/SignIn';
 import ChatContainer from './containers/ChatContainer';
 import SignUp from './components/SignUp';
 import WelcomePage from './components/WelcomePage';
+// import wxLoginPage from './components/WxLoginPage';
 import App from './containers/App';
 import {checkAuth} from './actions/authActions';
 
@@ -17,6 +18,7 @@ const Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={WelcomePage} />
     <Route path="/welcome" component={WelcomePage} />
+    {/*<Route path ="/wxLogin" component={wxLoginPage}/>*/}
     <Route path="/signin" component={SignIn} />
     <Route path="/signup" component={SignUp} />
     <Route path="/chat" component={ChatContainer}>

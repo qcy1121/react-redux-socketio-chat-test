@@ -1,7 +1,11 @@
 var ids = {
-  facebook: {
-    clientID: '509360805905534',
-    clientSecret: '6866390927213d6a21946f0fc852a881'
-  }
+    facebook: {
+        clientID: '509360805905534',
+        clientSecret: '6866390927213d6a21946f0fc852a881'
+    },
+    wechat: {
+        appId: 'get your own',
+        secret: 'get your own'
+    }
 }
 module.exports = ids;

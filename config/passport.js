@@ -1,4 +1,5 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
+var WechatStrategy = require('passport-wechat').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../src/server/models/User');
 var cookies = require('react-cookie');
@@ -83,4 +84,44 @@ module.exports = function(passport) {
       })
     }
   ));
+
+    //wechat passport
+    passport.use(new WechatStrategy({//todo wechat update
+            appID: oAuthConfig.wechat.appId,
+            // name: 'wechat',//默认为wechat,可以设置组件的名字,
+            appSecret: oAuthConfig.wechat.secret,
+            // client: 'wechat',//{wechat|web},
+            callbackURL: "http://" + host + "/api/auth/wechat/callback",//{CALLBACKURL},
+            scope: 'snsapi_userinfo',//{snsapi_userinfo|snsapi_base},
+            state:'',// {STATE},
+            getToken: '',//{getToken},
+            saveToken: '',//{saveToken}
+        },
+        function (accessToken, refreshToken, profile, done) {
+            cookies.save('username', profile.displayName)
+            User.findOne({ 'wechat.token': profile.token }, function(err, user) {
+                if (err) { console.log(err); }
+                if (!err && user !== null) {
+                    done(null, user);
+                } else {
+                    var newUser = new User({ 'wechat.token': profile.token, 'wechat.username': profile.displayName});
+                    newUser.save(function(err, user) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            done(null, user);
+                        }
+                    });
+                }
+            })
+            // return done(err, profile);
+        }
+    ));
+    // router.get('/auth/wechat/callback', passport.authenticate('wechat', {
+    //     failureRedirect: '/auth/fail',
+    //     successReturnToOrRedirect: '/'
+    // }));
+    // state - Override state for this specific API call
+    // callbackURL - Override callbackURL for this specific API call
+    // scope - Override scope for this specific API call
 }

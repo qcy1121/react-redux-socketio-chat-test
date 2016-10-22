@@ -18,6 +18,18 @@ module.exports = function loadUserRoutes(router, passport) {
     failureRedirect: '/'
   }));
 
+  router.get('/auth/wechat', passport.authenticate('wechat', {
+    session: false,
+    successRedirect: '/chat',
+    failureRedirect: '/'
+  }));
+
+  router.get('/auth/wechat/callback', passport.authenticate('wechat', {
+    session: false,
+    successRedirect: '/chat',
+    failureRedirect: '/'
+  }));
+
   router.post('/sign_up', passport.authenticate('local-signup', { session: false}), function(req, res) {
     res.json(req.user);
   });
