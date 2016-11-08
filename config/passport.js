@@ -85,6 +85,8 @@ module.exports = function(passport) {
     }
   ));
 
+    const getWeChatToken=(openid)=>{};
+    const setWeChatToken=(tocken)=>{};
     //wechat passport
     passport.use(new WechatStrategy({//todo wechat update
             appID: oAuthConfig.wechat.appId,
@@ -94,8 +96,8 @@ module.exports = function(passport) {
             callbackURL: "http://" + host + "/api/auth/wechat/callback",//{CALLBACKURL},
             scope: 'snsapi_userinfo',//{snsapi_userinfo|snsapi_base},
             state:'',// {STATE},
-            getToken: '',//{getToken},
-            saveToken: '',//{saveToken}
+            getToken: getWeChatToken,//{getToken},
+            saveToken: setWeChatToken,//{saveToken}
         },
         function (accessToken, refreshToken, profile, done) {
             cookies.save('username', profile.displayName)

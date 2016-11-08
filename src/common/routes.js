@@ -7,6 +7,8 @@ import SignUp from './components/SignUp';
 import WelcomePage from './components/WelcomePage';
 // import wxLoginPage from './components/WxLoginPage';
 import App from './containers/App';
+import FBSignIn from './components/FBSignIn';
+import WXSignIn from './components/WXSignIn';
 import {checkAuth} from './actions/authActions';
 
 const requireAuth = (nextState, replace) => {
@@ -18,7 +20,8 @@ const Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={WelcomePage} />
     <Route path="/welcome" component={WelcomePage} />
-    {/*<Route path ="/wxLogin" component={wxLoginPage}/>*/}
+    <Route path ="/FBSignIn" component={FBSignIn}/>
+    <Route path ="/WxSignIn" component={WXSignIn}/>
     <Route path="/signin" component={SignIn} />
     <Route path="/signup" component={SignUp} />
     <Route path="/chat" component={ChatContainer}>

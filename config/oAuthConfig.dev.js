@@ -4,8 +4,8 @@ var ids = {
         clientSecret: '6866390927213d6a21946f0fc852a881'
     },
     wechat: {
-        appId: 'get your own',
-        secret: 'get your own'
+        appId: 'wx41120ebc88ded76f',
+        secret: '752f5788fe6ea27f1b87a1c72de334ef'
     }
 }
 module.exports = ids;

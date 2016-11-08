@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import {welcomePage} from '../actions/actions';
 import { connect } from 'react-redux';
 import { Input, Button } from 'react-bootstrap';
-import FBSignIn from './FBSignIn';
 import SignIn from './SignIn';
 
 class WelcomePage extends Component {
@@ -65,6 +64,12 @@ class WelcomePage extends Component {
             <Link to="/signin">
               <Button style={{width: '100%'}} bsStyle="default" >Sign in</Button>
             </Link>
+              <Link to="/FBSignIn">
+                  <Button style={{width: '100%'}} bsStyle="default" class="">Sign in Facebook</Button>
+              </Link>
+              <Link to="/WxSignIn">
+                  <Button style={{width: '100%'}} bsStyle="default" >Sign in WeChat</Button>
+              </Link>
           </main>
         </div>
       );

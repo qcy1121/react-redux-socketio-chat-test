@@ -14,9 +14,15 @@ var UserSchema = mongoose.Schema({
     token: String,
     email: String,
   },
-  wechat:{//todo wechat info
-  username:String,
-
+  wechat: {//todo wechat info
+    "openid": String,
+    "nickname": String,
+    "sex": String,//"1",
+    "province": String,//"PROVINCE",
+    "city": String,//"CITY",
+    "country": String,//"COUNTRY",
+    "headimgurl": String,//"http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+    "privilege": Array,// ["PRIVILEGE1", "PRIVILEGE2" ]
   }
 });
 
